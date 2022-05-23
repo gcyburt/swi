@@ -19,6 +19,8 @@ namespace swi
             //dict for results, sorting will be easier
             Dictionary<string, double> notSortedResult = new Dictionary<string, double>();
 
+            double val1 = 0;
+            double val2 = 0;
             foreach (KeyValuePair<string, Dictionary<string, dynamic>> obj in equationsDicts)
             {
                 List<dynamic> operatorAndOperands = new List<dynamic>(3);
@@ -36,9 +38,9 @@ namespace swi
                             dynamic res = operatorAndOperands[1].GetDouble() + operatorAndOperands[2].GetDouble();
                             notSortedResult.Add(objectName, res);
                         }
-                        catch (ArithmeticException e)
+                        catch (InvalidOperationException e)
                         {
-                            Console.WriteLine(e.Message);
+                            Console.WriteLine("Invalid operands at: " + objectName);
                         }
                         break;
 
@@ -48,9 +50,9 @@ namespace swi
                             dynamic res = operatorAndOperands[1].GetDouble() - operatorAndOperands[2].GetDouble();
                             notSortedResult.Add(objectName, res);
                         }
-                        catch (ArithmeticException e)
+                        catch (InvalidOperationException e)
                         {
-                            Console.WriteLine(e.Message);
+                            Console.WriteLine("Invalid operands at: " + objectName);
                         }
                         break;
 
@@ -60,9 +62,9 @@ namespace swi
                             dynamic res = operatorAndOperands[1].GetDouble() * operatorAndOperands[2].GetDouble();
                             notSortedResult.Add(objectName, res);
                         }
-                        catch (ArithmeticException e)
+                        catch (InvalidOperationException e)
                         {
-                            Console.WriteLine(e.Message);
+                            Console.WriteLine("Invalid operands at: " + objectName);
                         }
                         break;
 
@@ -72,9 +74,9 @@ namespace swi
                             dynamic res = Math.Sqrt(operatorAndOperands[1].GetDouble());
                             notSortedResult.Add(objectName, res);
                         }
-                        catch (ArithmeticException e)
+                        catch (InvalidOperationException e)
                         {
-                            Console.WriteLine(e.Message);
+                            Console.WriteLine("Invalid operands at: " + objectName);
                         }
                         break;
 
